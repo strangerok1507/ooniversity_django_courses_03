@@ -42,3 +42,6 @@ td.first{
   float: right;
   margin-right:49%
 }
+p:first-letter {
+    color: red; /* Красный цвет первой буквы */
+   }
