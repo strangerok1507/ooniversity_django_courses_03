@@ -39,14 +39,13 @@ th{
 }
 td.first{
   color:blue;
-  float: right;
-  margin-right:49%
+  vertical-align:middle;
 }
 span.glav{
   text-decoration:underline;
   color: red 
    }
-.panel-footer{
+.newfooter{
   background-color: black;
   text-align: center;
 
@@ -56,4 +55,15 @@ span.glav{
 }
 #prava{
   text-shadow: 1px 1px 2px black, 0 0 1em red;
+}
+a.contact{
+  color:red;
+  text-decoration:underline;
+  font: 16pt serif;
+}
+a.courses{
+  color:yellow;
+  text-shadow: 1px 1px 2px black, 0 0 1em red;
+  text-decoration:underline;
+  font: 16pt serif;
 }
