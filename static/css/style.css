@@ -20,13 +20,13 @@ body {
 #manager {
     height: 250px
 }
-span.name {
+.name {
     color: red;
 }
-span.skype {
+.skype {
     color: blue;
 }
-span.phone {
+.phone {
     text-decoration: underline;
 }
 .tdfunc{
@@ -37,11 +37,11 @@ th{
   color:black;
   font: 24pt serif;
 }
-td.first{
+.first{
   color:blue;
   vertical-align:middle;
 }
-span.glav{
+.glav{
   text-decoration:underline;
   color: red 
    }
@@ -56,12 +56,12 @@ span.glav{
 #prava{
   text-shadow: 1px 1px 2px black, 0 0 1em red;
 }
-a.contact{
+.contact{
   color:red;
   text-decoration:underline;
   font: 16pt serif;
 }
-a.courses{
+.courses{
   color:yellow;
   text-shadow: 1px 1px 2px black, 0 0 1em red;
   text-decoration:underline;
