@@ -10,12 +10,9 @@ body {
     background-image: url(../images/background.jpg);
 }
 .photo {
-    filter: alpha(opacity=100);
-    -moz-opacity: 1;
-    -khtml-opacity: 1;
     opacity: 1;
     padding-top: 25px;
-    align: center;
+    
 }
 #dir {
     height: 300px
