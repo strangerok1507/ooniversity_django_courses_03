@@ -12,7 +12,6 @@ body {
 .photo {
     opacity: 1;
     padding-top: 25px;
-    
 }
 #dir {
     height: 300px
@@ -29,41 +28,40 @@ body {
 .phone {
     text-decoration: underline;
 }
-.tdfunc{
-  font: 18pt serif;
-  text-align: center;
+.tdfunc {
+    font: 18pt serif;
+    text-align: center;
 }
-th{
-  color:black;
-  font: 24pt serif;
+th {
+    color: black;
+    font: 24pt serif;
 }
-.first{
-  color:blue;
-  vertical-align:middle;
+.first {
+    color: blue;
+    vertical-align: middle;
 }
-.glav{
-  text-decoration:underline;
-  color: red 
-   }
-.newfooter{
-  background-color: black;
-  text-align: center;
-
+.glav {
+    text-decoration: underline;
+    color: red
 }
-.firma{
-  color:green;
+.newfooter {
+    background-color: black;
+    text-align: center;
 }
-#prava{
-  text-shadow: 1px 1px 2px black, 0 0 1em red;
+.firma {
+    color: green;
 }
-.contact{
-  color:red;
-  text-decoration:underline;
-  font: 16pt serif;
+#prava {
+    text-shadow: 1px 1px 2px black, 0 0 1em red;
 }
-.courses{
-  color:yellow;
-  text-shadow: 1px 1px 2px black, 0 0 1em red;
-  text-decoration:underline;
-  font: 16pt serif;
+.contact {
+    color: red;
+    text-decoration: underline;
+    font: 16pt serif;
+}
+.courses {
+    color: yellow;
+    text-shadow: 1px 1px 2px black, 0 0 1em red;
+    text-decoration: underline;
+    font: 16pt serif;
 }
