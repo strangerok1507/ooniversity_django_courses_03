@@ -29,3 +29,16 @@ span.skype {
 span.phone {
     text-decoration: underline;
 }
+.tdfunc{
+  font: 18pt serif;
+  text-align: center;
+}
+th{
+  color:black;
+  font: 24pt serif;
+}
+td.first{
+  color:blue;
+  float: right;
+  margin-right:49%
+}
