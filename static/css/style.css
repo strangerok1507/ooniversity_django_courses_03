@@ -42,7 +42,18 @@ td.first{
   float: right;
   margin-right:49%
 }
-p:first-letter {
-    color: red; /* Красный цвет первой буквы */
+span.glav{
+  text-decoration:underline;
+  color: red 
    }
+.panel-footer{
+  background-color: black;
+  text-align: center;
 
+}
+.firma{
+  color:green;
+}
+#prava{
+  text-shadow: 1px 1px 2px black, 0 0 1em red;
+}
