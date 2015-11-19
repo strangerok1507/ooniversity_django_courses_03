@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +9,8 @@
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>ITBursa Студенты</title>
   <!-- Bootstrap -->
-  <link href="../static/css/bootstrap.css" rel="stylesheet">
-  <link href="../static/css/style.css" rel="stylesheet">
+  <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet">
+  <link href="{% static 'css/style.css'%}" rel="stylesheet">
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -29,15 +30,15 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">
-          <img class="logo" alt="Logo" src="../static/images/logo.svg">
+        <a class="navbar-brand" href="{% url 'index' %}">
+          <img class="logo" alt="Logo" src="{% static 'images/logo.svg'%}">
         </a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li><a href="index.html">Main</a></li>
-          <li><a href="contact.html">Contacts</a></li>
-          <li class="active"><a href="student_list.html">Students</a></li>
+          <li><a href="{% url 'index' %}">Main</a></li>
+          <li><a href="{% url 'contact' %}">Contacts</a></li>
+          <li class="active"><a href="{% url 'student_list' %}">Students</a></li>
         </ul>
       </div>
       <!--/.nav-collapse -->
@@ -63,7 +64,7 @@
             </thead>
             <tbody>
               <tr>
-                <td><a href="student_detail.html">1</a></td>
+                <td><a href="{% url 'student_detail' %}">1</a></td>
                 <td>Рожков</td>
                 <td>Павел</td>
                 <td>г. Фурманов, ул. Академическая, дом 27, квартира 13</td>
@@ -110,7 +111,7 @@
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
 
 </html>
