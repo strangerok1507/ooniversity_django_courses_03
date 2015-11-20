@@ -15,7 +15,7 @@ def discr(request,a,b,c):
 
 def deq(request,a,b):
   x=-float(b)/(2*float(a))
-  t=u'Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = %d' % x
+  t=u'Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = %d' % round(x,2)
   return t
 
 
@@ -27,7 +27,7 @@ def dbig(request,a,b,c):
   x2=(-b-((b*b-4*a*c)**(1/2.0)))/2*a
   x1=str(round(x1,2))
   x2=str(round(x2,2))
-  t=u'Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 =%s x2 =%s ' % (x1,x2)
+  t=u'Квадратное уравнение имеет два действительных корня: x1 =%s x2 =%s ' % (x1,x2)
   return t
 
 def quadratic_results(request):
@@ -41,15 +41,14 @@ def quadratic_results(request):
   for i in sorted(zn.keys()):
     try:
       zn[i]=int(zn[i])
-    except Exception:
-      if zn[i].isdigit():
-        zn[i]=zn[i]
-        if i=='a' and zn[i]==0:
+      if i=='a' and zn[i]==0:
           err[i]=u'коэффициент при первом слагаемом уравнения не может быть равным нулю'
-      elif zn[i]=='':
+    except Exception:
+      if zn[i]=='':
         err[i]=u'коэффициент не определен'  
       else:
         err[i]=u'коэффициент не целое число'
+  print err
   if err.values() ==[]:
     d=discr(request,a,b,c)
     d=int(d)
