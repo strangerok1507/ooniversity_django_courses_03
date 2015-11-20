@@ -1,0 +1,15 @@
+    <ul>
+    {% for x,y in zn.iteritems %}
+        <li>{{x}}={{y}}</li>
+      {% for i,k in err.iteritems %}
+        {%if x == i%}
+            {{k}}
+        {%endif%}
+      {% endfor %}
+    {% endfor %}
+    </ul>
+    {% if d %}
+      Дискриминант = {{d}}<br>
+    
+    {{errd}}
+      {%endif %}
