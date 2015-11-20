@@ -55,10 +55,10 @@ def results(request):
     d=int(d)
     print type(d)
     print d
-    if d<0:
+    if d==0:
+      errd=deq(request,a,b)    
+    elif d<0:
       errd=u'Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.'
-    elif d==0:
-      errd=deq(request,a,b)
     else:
       errd=dbig(request,a,b,c)
     print errd
