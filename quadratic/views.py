@@ -30,7 +30,7 @@ def dbig(request,a,b,c):
   t=u'Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 =%s x2 =%s ' % (x1,x2)
   return t
 
-def results(request):
+def quadratic_results(request):
   result={}
   error={}
   a=request.GET['a']
@@ -53,15 +53,12 @@ def results(request):
   if err.values() ==[]:
     d=discr(request,a,b,c)
     d=int(d)
-    print type(d)
-    print d
     if d==0:
       errd=deq(request,a,b)    
     elif d<0:
       errd=u'Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.'
     else:
       errd=dbig(request,a,b,c)
-    print errd
   else:
     d=''
     errd=''

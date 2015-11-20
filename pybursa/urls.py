@@ -11,5 +11,5 @@ urlpatterns = patterns('',
     url(r'^student_detail/', views.student_detail,name='student_detail'),    
     url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^quadratic/results/',quadr.results,name='quadratic'),
+    url(r'^quadratic/results/',quadr.quadratic_results,name='quadratic_results'),
 )
