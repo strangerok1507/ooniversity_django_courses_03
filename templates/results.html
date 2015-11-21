@@ -1,15 +1,14 @@
+<h1>Решение квадратного уравнения</h1>
     <ul>
-    {% for x,y in zn.iteritems %}
-        <li>{{x}}={{y}}</li>
-      {% for i,k in err.iteritems %}
-        {%if x == i%}
-            {{k}}
-        {%endif%}
-      {% endfor %}
-    {% endfor %}
+    <li>a = {{a}}</li>
+   {{error_a}}
+   <li>b = {{b}}</li>
+   {{error_b}}
+   <li>c = {{c}}</li>
+   {{error_c}}
     </ul>
-    {% if d or errd %}
-      Дискриминант = {{d}}<br>
-    
-    {{errd}}
-      {%endif %}
+    {%if d or resh%}
+    Дискриминант: {{d}}<br>
+    {{error_d}}<br>
+    {{resh}}
+    {%endif%}

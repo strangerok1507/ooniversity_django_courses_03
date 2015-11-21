@@ -2,7 +2,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from django.template import RequestContext, loader
 
 
 def discr(request,a,b,c):
@@ -15,7 +14,8 @@ def discr(request,a,b,c):
 
 def deq(request,a,b):
   x=-float(b)/(2*float(a))
-  t=u'Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = %d' % round(x,2)
+  x= round(x,2)
+  t=u'Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = %d' % float(x)
   return t
 
 
@@ -27,7 +27,7 @@ def dbig(request,a,b,c):
   x2=(-b-((b*b-4*a*c)**(1/2.0)))/2*a
   x1=str(round(x1,2))
   x2=str(round(x2,2))
-  t=u'Квадратное уравнение имеет два действительных корня: x1 =%s x2 =%s ' % (x1,x2)
+  t=u'Квадратное уравнение имеет два действительных корня: x1 = %s x2 = %s ' % (x1,x2)
   return t
 
 def quadratic_results(request):
@@ -39,31 +39,35 @@ def quadratic_results(request):
   zn ={'a':a,'b':b,'c':c}
   err={}
   for i in sorted(zn.keys()):
+    t='error_%s' % i
     try:
       zn[i]=int(zn[i])
       if i=='a' and zn[i]==0:
-          err[i]=u'коэффициент при первом слагаемом уравнения не может быть равным нулю'
+          zn[t]=u'коэффициент при первом слагаемом уравнения не может быть равным нулю'
+          err['flag']=1
     except Exception:
       if zn[i]=='':
-        err[i]=u'коэффициент не определен'  
+        zn[t]=u'коэффициент не определен'  
+        err['flag']=1
       else:
-        err[i]=u'коэффициент не целое число'
-  print err
+        zn[t]=u'коэффициент не целое число'
+        err['flag']=1
+  
   if err.values() ==[]:
     d=discr(request,a,b,c)
-    d=int(d)
-    if d==0:
-      errd=deq(request,a,b)    
-    elif d<0:
-      errd=u'Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.'
+    zn['d']=int(d)
+    if zn['d']==0:
+      zn['resh']=deq(request,a,b)    
+    elif zn['d']<0:
+      zn['error_d']=u'Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.'
     else:
-      errd=dbig(request,a,b,c)
-  else:
-    d=''
-    errd=''
-  context = RequestContext(request, {
-        'zn':zn,'err':err,'d':d,'errd':errd
-    })
+      zn['resh']=dbig(request,a,b,c)
+
+
+  #context = RequestContext(request, {
+  #      'zn':zn,'err':err,'d':d,'errd':errd
+  #  })
       
-  template = loader.get_template('results.html')
-  return HttpResponse(template.render(context))
+  #template = loader.get_template('results.html')
+  #return HttpResponse(template.render(context))
+  return render(request,'results.html',zn)
