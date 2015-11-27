@@ -13,6 +13,3 @@ class Student(models.Model):
 
   def __unicode__(self):
     return self.name
-
-  def courses_display(self):
-    return ', '.join([obj.name for obj in self.courses.all()])
