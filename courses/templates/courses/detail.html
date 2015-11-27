@@ -7,9 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>ITBursa Главная</title>
+  <title>ITBursa информация о студенте</title>
   <!-- Bootstrap -->
-  
   <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet">
   <link href="{% static 'css/style.css'%}" rel="stylesheet">
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -37,9 +36,9 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="{% url 'index' %}">Main</a></li>
+          <li><a href="{% url 'index' %}">Main</a></li>
           <li><a href="{% url 'contact' %}">Contacts</a></li>
-          <li class="active"><a href="{% url 'students:list_view' %}">Students</a></li>
+          <li class="active"><a href="{% url 'student_list' %}">Students</a></li>
         </ul>
       </div>
       <!--/.nav-collapse -->
@@ -49,40 +48,33 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Description PyBursa</h1>
-      </div>
-      <p>
-        Курсы ItBursa начали работу в 2014 году. Мы специализируемся на <span class="glav">«модных» </span>языках программирования. Принципиальное наше отличие от других курсов – <span class="glav">максимум практики</span> и жесткая система обязательных домашних заданий.</p>
-      <p>
-        Преподаватели – опытные практикующие разработчики, они помогают участникам в ходе курсов создать реальные проекты и получить практические навыки, применимые к работе. Домашние задания на наших курсах обязательны и их невыполнение приводит к исключению с курсов. Таким образом, мы готовим не просто «слушателей» курсов, а настоящих специалистов, способных создавать пусть простые, но рабочие проекты.
-      </p>
-      <p>
-        За более детальной информацией можно обратиться по номерам указанным в <a class="text-primary" href="contact.html">контактах</a>
-      </p>
-      <p>
-        Чтобы посмотреть список курсов который на данный момент проходят в ItBursa <a class="text-info" href="http://itbursa.com/">нажмите здесь</a>
-      </p>
-      <div class="page-header">
-        <div class="container">
-          <h1>Выбирай любой курс</h1>
+      <div class="col-md-12">
+        <h1>Рожков Павел</h1>
+        <div class="col-md-8">
+        <img class="avatar" src="{% static 'images/student_avatar.png'%}">
+        </div>
+        <div class="col-md-8">
+        <button type="button" class="btn btn-lg btn-success btn-o-sebe">Студент о себе</button>
+        <h3>Student's cards</h3>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
           <table class="table">
             <thead>
               <tr>
-                <th class="panel-heading">Курс</th>
+                <th class="panel-heading">#</th>
+                <th class="panel-heading">Тема</th>
                 <th class="panel-heading">Описание</th>
               </tr>
             </thead>
             <tbody>
-            {% for c in course%}
+            {% for c in lessons%}
               <tr>
-                
-                <td class="tdfunc"><a href="{%url 'courses:detail' c.id%}">{{c}}<a></td>
+                <td class="first">{{c.order}}</td>
+                <td class="tdfunc">{{c}}</td>
                 <td>
-                  {{c.short_description}}
+                  {{c.description}}
                 </td>
               </tr>
             {% endfor%}
@@ -90,8 +82,42 @@
             </tbody>
           </table>
         </div>
+        <div class="col-md-6">
+          <table class="table tbl">
+      
+           <tbody>
+           <tr  class="pod">
+              <td class="tbl">Course</td>
+              <td class="tbl">Week</td>
+              <td class="tbl">Control type</td>
+              <td class="tbl">Grade</td>
+            </tr>
+              <tr >
+                <td class="tbl" rowspan="4">Python Введение</td>
+                <td class="tbl" rowspan="2">Week1</td>
+                <td class="tbl">Tests</td>
+                <td class="tbl">100</td>
+              </tr>
+              <tr >                
+                <td class="tbl">Problem Task 1</td>
+                <td class="tbl">100</td>
+              </tr>
+              <tr >              
+                <td class="tbl" rowspan="2">Week2</td>  
+                <td class="tbl">Tests</td>
+                <td class="tbl">100</td>
+              </tr> 
+              <tr >                
+                <td class="tbl">Problem Task 2</td>
+                <td class="tbl">100</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
       </div>
     </div>
+  </div>
   </div>
   <div class="panel-footer newfooter">
     Сайт компании <span class="firma">ООО"блбаба"</span>. <span id="prava">Все права защищены</span>

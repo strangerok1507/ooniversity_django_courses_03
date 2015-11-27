@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>ITBursa Контакты</title>
+  <title>ITBursa информация о студенте</title>
   <!-- Bootstrap -->
   <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet">
   <link href="{% static 'css/style.css'%}" rel="stylesheet">
@@ -37,7 +37,7 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li><a href="{% url 'index' %}">Main</a></li>
-          <li class="active"><a href="{% url 'contact' %}">Contacts</a></li>
+          <li><a href="{% url 'contact' %}">Contacts</a></li>
           <li class="active"><a href="{% url 'students:list_view' %}">Students</a></li>
         </ul>
       </div>
@@ -45,59 +45,56 @@
     </div>
   </nav>
   <div class="container theme-showcase" role="main">
+    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-      <div class="col-sm-6">
-        <h1>Director</h1>
-        <p>
-          Name: <span class="name">Соболев Георгий Григорьевич</span>
-          <br> Skype:
-          <span class="skype">sobolevgeorgiy45</span>
-          <br>
-          <u class="courses">Email:sobolevgeorgiy45@gmail.com</u>
-          <br> Phone:
-          <span class="phone">8 (945) 825-33-72</span>
-          <br>
-        </p>
+      <div class="container">
+      <div class="col-md-12">
+        <h3>Список студентов</h3>
+        </div>
       </div>
-      <div class="col-sm-6">
-        <img class="photo" src="{% static 'images/director.png'%}" id="dir">
-      </div>
-      <div class="col-sm-6">
-        <h1>Founder</h1>
-        <p>
-          Name: <span class="name">Филиппова Татьяна Федоровна</span>
-          <br> Skype:
-          <span class="skype">FilippovaTatyana391</span>
-          <br> Email:filippovatatyana391@gmail.com
-          <br> Phone:
-          <span class="phone">8 (950) 186-92-74</span>
-          <br>
-        </p>
-      </div>
-      <div class="col-sm-6">
-        <img class="photo" src="{% static 'images/manager.png'%}" id="manager">
-      </div>
-      <div>
-        <h1>Manager</h1>
-        <p>
-          Name: <span class="name">Миронов Вениамин Макарович</span>
-          <br> Skype:
-          <span class="skype">MironovVeniamin59</span>
-          <br> Email:mronovveniamin595@gmail.com
-          <br> Phone:
-          <span class="phone">8 (935) 908-42-52</span>
-          <br>
-        </p>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="panel-heading">#</th>
+                <th class="panel-heading">Фамилия и имя</th>
+                <th class="panel-heading">Адрес</th>
+                <th class="panel-heading">skype</th>
+                <th class="panel-heading">Курсы</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for c in student%}
+              <tr>
+                <td class="first">{{c.id}}</td>
+                <td class="tdfunc"><a href="{%url 'students:detail' c.id %}">{{c.name}} {{c.surname}}</a></td>
+                <td class="tdfunc">{{c.address}}</td>
+                <td class="tdfunc">{{c.skype}}</td>
+                <td> {% for s_courses in c.courses_id %}
+                  <p><a href="{% url 'courses:detail' s_courses.id %}">{{ s_courses }}</a></p>
+                  {% endfor %}
+                </td>
+              </tr>
+            {% endfor%}
+           
+            </tbody>
+          </table>
+        </div>
+        
+
       </div>
     </div>
+  </div>
   </div>
   <div class="panel-footer newfooter">
     Сайт компании <span class="firma">ООО"блбаба"</span>. <span id="prava">Все права защищены</span>
   </div>
+
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
 
 </html>

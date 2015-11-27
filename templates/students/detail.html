@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>ITBursa Контакты</title>
+  <title>ITBursa информация о студенте</title>
   <!-- Bootstrap -->
   <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet">
   <link href="{% static 'css/style.css'%}" rel="stylesheet">
@@ -37,7 +37,7 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li><a href="{% url 'index' %}">Main</a></li>
-          <li class="active"><a href="{% url 'contact' %}">Contacts</a></li>
+          <li><a href="{% url 'contact' %}">Contacts</a></li>
           <li class="active"><a href="{% url 'students:list_view' %}">Students</a></li>
         </ul>
       </div>
@@ -45,59 +45,66 @@
     </div>
   </nav>
   <div class="container theme-showcase" role="main">
+    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-      <div class="col-sm-6">
-        <h1>Director</h1>
-        <p>
-          Name: <span class="name">Соболев Георгий Григорьевич</span>
-          <br> Skype:
-          <span class="skype">sobolevgeorgiy45</span>
-          <br>
-          <u class="courses">Email:sobolevgeorgiy45@gmail.com</u>
-          <br> Phone:
-          <span class="phone">8 (945) 825-33-72</span>
-          <br>
-        </p>
+      <div class="container">
+      <div class="col-md-12">
+      {% for stud in student %}
+        <h1>{{stud.name}} {{stud.surname}}</h1>
+     
+        
       </div>
-      <div class="col-sm-6">
-        <img class="photo" src="{% static 'images/director.png'%}" id="dir">
-      </div>
-      <div class="col-sm-6">
-        <h1>Founder</h1>
-        <p>
-          Name: <span class="name">Филиппова Татьяна Федоровна</span>
-          <br> Skype:
-          <span class="skype">FilippovaTatyana391</span>
-          <br> Email:filippovatatyana391@gmail.com
-          <br> Phone:
-          <span class="phone">8 (950) 186-92-74</span>
-          <br>
-        </p>
-      </div>
-      <div class="col-sm-6">
-        <img class="photo" src="{% static 'images/manager.png'%}" id="manager">
-      </div>
-      <div>
-        <h1>Manager</h1>
-        <p>
-          Name: <span class="name">Миронов Вениамин Макарович</span>
-          <br> Skype:
-          <span class="skype">MironovVeniamin59</span>
-          <br> Email:mronovveniamin595@gmail.com
-          <br> Phone:
-          <span class="phone">8 (935) 908-42-52</span>
-          <br>
-        </p>
+      <div class="row">
+        <div class="col-md-6">
+          <table class="table tbl">
+           <tbody>
+             <tr  class="pod">
+                <td class="tbl">дата рождения</td>
+                <td class="tbl">{{stud.date_of_birth}}</td>
+              </tr>
+              <tr class="pod" >
+                <td class="tbl">адрес</td>
+                <td class="tbl">{{stud.address}}</td>
+              </tr>
+              <tr class="pod" >
+                <td class="tbl">почта</td>
+                <td class="tbl">{{stud.email}}</td>
+              </tr>
+              <tr class="pod" >
+                <td class="tbl">логин skype</td>
+                <td class="tbl">{{stud.skype}}</td>
+              </tr>
+              <tr  class="pod">
+                <td class="tbl">телефон</td>
+                <td class="tbl">{{stud.phone}}</td>
+              </tr>
+              {% endfor %}
+              <tr class="pod" >
+                <td class="tbl">курсы</td>
+                <td>
+                 {% for course in student.courses_id %}
+                  <a href="{% url 'courses:detail' course.id %}">{{ course }}</a>
+                  {% endfor %}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        
+
       </div>
     </div>
+  </div>
   </div>
   <div class="panel-footer newfooter">
     Сайт компании <span class="firma">ООО"блбаба"</span>. <span id="prava">Все права защищены</span>
   </div>
+
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
 
 </html>
