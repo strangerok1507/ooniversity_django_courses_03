@@ -56,29 +56,29 @@
         <div class="col-md-6">
           <table class="table tbl">
            <tbody>
-             <tr  class="pod">
-                <td class="tbl">дата рождения</td>
-                <td class="tbl">{{stud.date_of_birth}}</td>
+             <tr>
+                <td >дата рождения</td>
+                <td >{{stud.date_of_birth}}</td>
               </tr>
-              <tr class="pod" >
-                <td class="tbl">адрес</td>
-                <td class="tbl">{{stud.address}}</td>
+              <tr >
+                <td >адрес</td>
+                <td >{{stud.address}}</td>
               </tr>
-              <tr class="pod" >
-                <td class="tbl">почта</td>
-                <td class="tbl">{{stud.email}}</td>
+              <tr >
+                <td >почта</td>
+                <td >{{stud.email}}</td>
               </tr>
-              <tr class="pod" >
-                <td class="tbl">логин skype</td>
-                <td class="tbl">{{stud.skype}}</td>
+              <tr >
+                <td >логин skype</td>
+                <td >{{stud.skype}}</td>
               </tr>
-              <tr  class="pod">
-                <td class="tbl">телефон</td>
-                <td class="tbl">{{stud.phone}}</td>
+              <tr>
+                <td >телефон</td>
+                <td >{{stud.phone}}</td>
               </tr>
               
-              <tr class="pod" >
-                <td class="tbl">курсы</td>
+              <tr >
+                <td >курсы</td>
                 <td>
                  {% for course in stud.courses_id %}
                   <a href="{% url 'courses:detail' course.id %}">{{ course }}</a>
