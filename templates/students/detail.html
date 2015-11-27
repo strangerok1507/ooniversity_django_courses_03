@@ -49,10 +49,8 @@
     <div class="jumbotron">
       <div class="container">
       <div class="col-md-12">
-      {% for stud in student %}
-        <h1>{{stud.name}} {{stud.surname}}</h1>
-     
-        
+      
+        <h1>{{stud.name}} {{stud.surname}}</h1>        
       </div>
       <div class="row">
         <div class="col-md-6">
@@ -78,11 +76,11 @@
                 <td class="tbl">телефон</td>
                 <td class="tbl">{{stud.phone}}</td>
               </tr>
-              {% endfor %}
+              
               <tr class="pod" >
                 <td class="tbl">курсы</td>
                 <td>
-                 {% for course in student.courses_id %}
+                 {% for course in stud.courses_id %}
                   <a href="{% url 'courses:detail' course.id %}">{{ course }}</a>
                   {% endfor %}
                 </td>

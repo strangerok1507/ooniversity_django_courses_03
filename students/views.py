@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from students.models import Student
 from courses.models import Course
-import pickle
 
 def list_view(request):
   try:
@@ -9,7 +8,6 @@ def list_view(request):
     students = Student.objects.filter(courses=id)
     for student in students:
       student.courses_id = Course.objects.filter(student=student)  
-    print 'try'
     return render(request, 'students/list.html', {"student": students})
   except:
     students = Student.objects.all()
@@ -19,7 +17,8 @@ def list_view(request):
   
 
 def detail(request,sid):
-  student = Student.objects.filter(id=sid)
+  student = Student.objects.get(id=sid)
   student.courses_id=Course.objects.filter(student=student)
-  return render(request, 'students/detail.html', {"student": student})
+  print Course.objects.filter(student=student)
+  return render(request, 'students/detail.html', {"stud": student})
   
