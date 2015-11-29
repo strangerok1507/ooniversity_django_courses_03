@@ -12,7 +12,7 @@ class LessonInline(admin.TabularInline):
 class CourseAdmin(admin.ModelAdmin):
   list_display = ('name','short_description')
   search_fields = ['name']
-  fields = ['name', 'short_description', 'description']
+  fields = ['name', 'short_description', 'description','coach','assistant']
   inlines = [LessonInline]
 
 
