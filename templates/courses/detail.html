@@ -7,15 +7,15 @@
 <div class="jumbotron">
     <div class="container">
         <div class="col-md-12">
-            <h1>{{course}}</h1>
-            <h3>{{course.description|truncatechars:32}}</h3>
+            <h1>{{ course }}</h1>
+            <h3>{{ course.description|truncatechars:32 }}</h3>
         </div>
     </div>
       
-      {% include "coach_include.html" with block_title="Преподаватель" instructor=coach %}
+      {% include "include/coach_include.html" with block_title="Преподаватель" instructor=coach %}
          
       
-      {% include "coach_include.html" with block_title="Ассистент" instructor=assistant %}
+      {% include "include/coach_include.html" with block_title="Ассистент" instructor=assistant %}
        
        
       
@@ -30,17 +30,17 @@
                     </tr>
                 </thead>
                 <tbody>
-            {% for c in lessons%}
+            {% for c in lessons %}
               
                     <tr>
-                        <td class="first">{{c.order}}</td>
-                        <td class="tdfunc">{{c}}</td>
+                        <td class="first">{{ c.order }}</td>
+                        <td class="tdfunc">{{ c }}</td>
                         <td>
 
-                  {{c.description}}
+                  {{ c.description }}
                 </td>
                     </tr>
-            {% endfor%}
+            {% endfor %}
            
             
                 </tbody>

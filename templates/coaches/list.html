@@ -22,18 +22,18 @@
               </tr>
             </thead>
             <tbody>
-            {% for c in student%}
+            {% for c in student %}
               <tr>
-                <td class="first">{{c.id}}</td>
-                <td class="tdfunc"><a href="{%url 'students:detail' c.id %}">{{c.name}} {{c.surname}}</a></td>
-                <td class="tdfunc">{{c.address}}</td>
-                <td class="tdfunc">{{c.skype}}</td>
+                <td class="first">{{ c.id }}</td>
+                <td class="tdfunc"><a href="{% url 'students:detail' c.id %}">{{ c.name }} {{ c.surname }}</a></td>
+                <td class="tdfunc">{{ c.address }}</td>
+                <td class="tdfunc">{{ c.skype }}</td>
                 <td> {% for s_courses in c.courses_id %}
-                  <p><a href="{% url 'courses:detail' s_courses.id %}">{{ s_courses }}</a></p>
+                  <p><a href="{% url 'courses:detail' s_courses.id %}">{{ s_courses  }}</a></p>
                   {% endfor %}
                 </td>
               </tr>
-            {% endfor%}
+            {% endfor %}
            
             </tbody>
           </table>

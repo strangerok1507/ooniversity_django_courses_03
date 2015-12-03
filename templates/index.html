@@ -32,14 +32,14 @@
               </tr>
             </thead>
             <tbody>
-            {% for c in course%}
+            {% for c in course %}
               <tr>                
-              <td class="tdfunc"><a href="{%url 'courses:detail' c.id%}">{{c|upper}}</a></td>
+              <td class="tdfunc"><a href="{% url 'courses:detail' c.id %}">{{ c|upper }}</a></td>
                 <td>
-                  {{c.short_description|title}}
+                  {{ c.short_description|title }}
                 </td>
               </tr>
-            {% endfor%}           
+            {% endfor %}           
             </tbody>
           </table>
         </div>

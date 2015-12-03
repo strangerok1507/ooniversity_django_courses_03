@@ -1,14 +1,14 @@
 <h1>Решение квадратного уравнения</h1>
     <ul>
-    <li>a = {{a}}</li>
-   {{error_a}}
-   <li>b = {{b}}</li>
-   {{error_b}}
-   <li>c = {{c}}</li>
-   {{error_c}}
+    <li>a = {{ a }}</li>
+   {{ error_a }}
+   <li>b = {{ b }}</li>
+   {{ error_b }}
+   <li>c = {{ c }}</li>
+   {{ error_c }}
     </ul>
-    {%if d or resh%}
-    Дискриминант: {{d}}<br>
-    {{error_d}}<br>
-    {{resh}}
-    {%endif%}
+    {% if d or resh %}
+    Дискриминант: {{ d }}<br>
+    {{ error_d }}<br>
+    {{ resh }}
+    {% endif %}
