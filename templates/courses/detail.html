@@ -15,7 +15,7 @@
     <div class="container">
         <div class="col-md-12">
             <h1>{{ course }}</h1>
-            <h3>{{ course.description|truncatechars:32 }}</h3>
+            <h3>{{ course.description|truncatechars:35 }}</h3>
         </div>
     </div>      
       {% include "include/coach_include.html" with block_title="Преподаватель" instructor=coach %}            
