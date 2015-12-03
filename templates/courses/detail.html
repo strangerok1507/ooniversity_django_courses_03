@@ -1,24 +1,25 @@
 {% extends "base.html" %}
+
+
 {% load staticfiles %}
+
+
 {% block title %}ITBursa информация о курсе{% endblock title %}
+
+
 {% block stud_active %}active{% endblock %}
-{% block content %}
-    
+
+
+{% block content %}    
 <div class="jumbotron">
     <div class="container">
         <div class="col-md-12">
             <h1>{{ course }}</h1>
             <h3>{{ course.description|truncatechars:32 }}</h3>
         </div>
-    </div>
-      
-      {% include "include/coach_include.html" with block_title="Преподаватель" instructor=coach %}
-         
-      
-      {% include "include/coach_include.html" with block_title="Ассистент" instructor=assistant %}
-       
-       
-      
+    </div>      
+      {% include "include/coach_include.html" with block_title="Преподаватель" instructor=coach %}            
+      {% include "include/coach_include.html" with block_title="Ассистент" instructor=assistant %}      
     <div class="row">
         <div class="col-md-12">
             <table class="table">
