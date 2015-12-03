@@ -2,8 +2,7 @@
 {% load staticfiles %}
 {% block index_active %}active{% endblock %}
 {% block content %}
-    <div class="jumbotron">
-    
+    <div class="jumbotron">    
       <div class="container">
         <h1>Description PyBursa</h1>
       </div>
@@ -34,19 +33,16 @@
             </thead>
             <tbody>
             {% for c in course%}
-              <tr>
-                
+              <tr>                
               <td class="tdfunc"><a href="{%url 'courses:detail' c.id%}">{{c|upper}}</a></td>
                 <td>
                   {{c.short_description|title}}
                 </td>
               </tr>
-            {% endfor%}
-           
+            {% endfor%}           
             </tbody>
           </table>
         </div>
-      </div>
-      
+      </div>      
     </div>
-    {% endblock content %}
+{% endblock content %}
