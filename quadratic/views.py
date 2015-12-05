@@ -33,7 +33,6 @@ def quadratic_results(request):
   x2 = None
   d = None
   form = QuadraticForm()
-  form= form
   if request.method == "GET":
     form = QuadraticForm(request.GET)
     if form.is_valid():
