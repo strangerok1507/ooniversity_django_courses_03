@@ -1,14 +1,8 @@
 <h1>Решение квадратного уравнения</h1>
-    <ul>
-    <li>a = {{ a }}</li>
-   {{ error_a }}
-   <li>b = {{ b }}</li>
-   {{ error_b }}
-   <li>c = {{ c }}</li>
-   {{ error_c }}
-    </ul>
-    {% if d or resh %}
-    Дискриминант: {{ d }}<br>
-    {{ error_d }}<br>
-    {{ resh }}
-    {% endif %}
+  <form>
+    {{form.as_p}}
+    <input type="submit">
+  </form>
+D  = {{ d }}
+x1 = {{ x1 }}
+x2 = {{ x2 }}
