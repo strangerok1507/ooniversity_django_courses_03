@@ -29,9 +29,9 @@ def dbig(a,b,c):
   return t
 
 def quadratic_results(request):
-  x1 = ''
-  x2 = ''
-  d = ''
+  x1 = None
+  x2 = None
+  d = None
   form = QuadraticForm()
   form= form
   if request.method == "GET":
@@ -47,5 +47,8 @@ def quadratic_results(request):
         temp = dbig(a, b, c)
         x1 = temp['1']
         x2 = temp['2']
-
-    return render(request,'quadratic/results.html',{'form':form,'d':d,'x1':x1,'x2':x2})
+    else:
+      form = QuadraticForm()
+      form= form
+  
+  return render(request,'quadratic/results.html',{'form':form,'d':d,'x1':x1,'x2':x2})
