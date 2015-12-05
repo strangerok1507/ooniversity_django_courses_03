@@ -37,8 +37,7 @@ def create(request):
       add_stud = form.save()
       messages.success(request, u'Student %s %s has been successfully added.' % (add_stud.name, add_stud.surname))
       return redirect('students:list_view')
-  else:
-    return render(request,'students/add.html',{'form':form})
+  return render(request,'students/add.html',{'form':form})
 
 def remove(request,sid):
   student = Student.objects.get(id=sid)
@@ -59,4 +58,4 @@ def edit(request,sid):
       return redirect('students:list_view')
   else:
     form = StudentModelForm(instance=student)
-    return render(request,'students/edit.html',{'form':form})
+  return render(request,'students/edit.html',{'form':form})
