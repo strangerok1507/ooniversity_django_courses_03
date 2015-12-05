@@ -7,6 +7,6 @@ urlpatterns = patterns('',
     url(r'^add/$', views.add, name='add'),
     url(r'^remove/(?P<cid>\d+)/$', views.remove, name='remove'),
     url(r'^edit/(?P<cid>\d+)/$', views.edit, name='edit'),
-    url(r'^(?P<cid>\d+)/add_lesson/$', views.add_lesson, name='add_lesson'),
+    url(r'^(?P<cid>\d+)/add_lesson$', views.add_lesson, name='add_lesson'),
     
 )

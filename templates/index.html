@@ -38,14 +38,17 @@
         <div class="container">
           <h1>Выбирай любой курс</h1>
         </div>
+         <a href="{% url 'courses:add' %}"><button class="glyphicon glyphicon-plus btn btn-success">Добавить курс</button></a>
       </div>
       <div class="row">
+
         <div class="col-md-12">
           <table class="table">
             <thead>
               <tr>
                 <th class="panel-heading">Курс</th>
                 <th class="panel-heading">Описание</th>
+                <th class="panel-heading"></th>
               </tr>
             </thead>
             <tbody>
@@ -55,7 +58,18 @@
                 <td>
                   {{ c.short_description|title }}
                 </td>
+                <td>
+                  <a href="{% url 'courses:edit' c.id %}">
+                    <button class="glyphicon glyphicon-pencil btn btn-success">Изменить</button>
+                  </a>
+                </td>
+                <td>
+                  <a href="{% url 'courses:remove' c.id %}">
+                    <button class="glyphicon glyphicon-remove btn btn-success">Удалить</button>
+                  </a>
+                </td>
               </tr>
+              
             {% endfor %}           
             </tbody>
           </table>

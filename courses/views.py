@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from courses.models import Lesson,Course
 from coaches.models import Coach
-from courses.forms import CourseModelForm,LessonModelForm
+from courses.forms import CourseModelForm, LessonModelForm
 from django.contrib import messages
 
 
@@ -55,7 +55,6 @@ def add_lesson(request,cid):
     form = LessonModelForm(request.POST)
     if form.is_valid():
       add_lesson = form.save();
-
       messages.success(request, u"Lesson %s has been successfully added." % (add_lesson.subject))
       return redirect('index')
   return render(request,'courses/add_lesson.html',{'form':form})
