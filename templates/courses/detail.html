@@ -12,6 +12,14 @@
 
 {% block content %}    
 <div class="jumbotron">
+{% if messages %}
+        <div class="alert alert-success" role="alert">
+          {% for message in messages %}
+            {{ message }}
+          {% endfor %}
+        </div>
+        {% endif %}  
+
     <div class="container">
         <div class="col-md-12">
             <h1>{{ course }}</h1>
@@ -19,7 +27,8 @@
         </div>
     </div>      
       {% include "include/coach_include.html" with block_title="Преподаватель" instructor=coach %}            
-      {% include "include/coach_include.html" with block_title="Ассистент" instructor=assistant %}      
+      {% include "include/coach_include.html" with block_title="Ассистент" instructor=assistant %}
+      <a href="{% url 'courses:add_lesson' course.id %}"><button class="glyphicon glyphicon-plus btn btn-success">Добавить занятие</button></a>      
     <div class="row">
         <div class="col-md-12">
             <table class="table">
