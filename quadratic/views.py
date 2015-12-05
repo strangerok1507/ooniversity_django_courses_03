@@ -47,8 +47,6 @@ def quadratic_results(request):
         temp = dbig(a, b, c)
         x1 = temp['1']
         x2 = temp['2']
-    else:
-      form = QuadraticForm()
-      form= form
+  
   
   return render(request,'quadratic/results.html',{'form':form,'d':d,'x1':x1,'x2':x2})
