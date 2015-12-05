@@ -3,9 +3,9 @@ from django import forms
 
 
 class QuadraticForm(forms.Form):
-  a = forms.IntegerField(label=u'Коеффициент а')
-  b = forms.IntegerField(label=u'Коеффициент b')
-  c = forms.IntegerField(label=u'Коеффициент с')
+  a = forms.IntegerField(label="коэффициент a")
+  b = forms.IntegerField(label="коэффициент b")
+  c = forms.IntegerField(label="коэффициент c")
 
 
   def clean_a(self):
