@@ -14,7 +14,7 @@ class StudentDetailView(DetailView):
 
 class StudentListView(ListView):
   model = Student  
-  #paginate_by = 2
+  paginate_by = 2
   def get_queryset(self):
     id = self.request.GET.get('course_id',None)  
     if id:
@@ -58,7 +58,6 @@ class StudentDeleteView(DeleteView):
 class StudentUpdateView(UpdateView):
   model = Student
   form_class = StudentModelForm
-  template_name = 'students/edit.html'
   success_url = reverse_lazy('students:list_view')
   
 
