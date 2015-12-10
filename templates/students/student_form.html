@@ -14,7 +14,7 @@
 <div class="jumbotron">
   <div class="container">
     <div class="col-md-12">
-      <h3>Добавление нового студента</h3>
+      <h3>{{ title }}</h3>
       <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
