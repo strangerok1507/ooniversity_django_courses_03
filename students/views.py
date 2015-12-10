@@ -5,7 +5,6 @@ from students.models import Student
 from courses.models import Course
 from students.forms import StudentModelForm
 from django.contrib import messages
-from pybursa.utils import detail_view
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
@@ -27,9 +26,7 @@ class StudentListView(ListView):
 #CreateView, UpdateView, DeleteView
 class StudentCreateView(CreateView):
   model = Student
-  form_class = StudentModelForm
-  success_url = reverse_lazy('students:list_view')
-
+  
   def get_context_data(self, **kwargs):
     context = super(StudentCreateView, self).get_context_data(**kwargs)
     context['title'] = 'Student registration'
@@ -47,7 +44,7 @@ class StudentDeleteView(DeleteView):
   def form_valid(self,form):
       student = form.save()
       messages.success(self.request, u'Info on %s %s has been sucessfully deleted.'  % (student.name, student.surname))
-      return super(StudentUpdateView, self).form_valid(form)
+      return super(StudentDeleteView, self).form_valid(form)
 
   def get_context_data(self, **kwargs):
     context = super(StudentDeleteView, self).get_context_data(**kwargs)
@@ -66,8 +63,7 @@ class StudentUpdateView(UpdateView):
   
 
   def get_context_data(self, **kwargs):
-    context = super(StudentUpdateView, self).get_context_data(**kwargs)
-    
+    context = super(StudentUpdateView, self).get_context_data(**kwargs)    
     context['title'] = 'Student info update'
     return context
 
