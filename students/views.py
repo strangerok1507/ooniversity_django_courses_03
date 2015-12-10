@@ -33,18 +33,19 @@ class StudentCreateView(CreateView):
     return context
 
   def form_valid(self,form):
-    student = form.save()
-    messages.success(self.request, 'Student %s %s has been successfully added.' % (student.name, student.surname))
+    form.save()
+    messages.success(self.request, 'Student %s %s has been successfully added.' % (form.cleaned_data['name'], form.cleaned_data['surname']))
     return super(StudentCreateView, self).form_valid(form)
 
 class StudentDeleteView(DeleteView):
   model = Student
   success_url = reverse_lazy('students:list_view')
   
-  def form_valid(self,form):
-      student = form.save()
-      messages.success(self.request, u'Info on %s %s has been sucessfully deleted.'  % (student.name, student.surname))
-      return super(StudentDeleteView, self).form_valid(form)
+  def delete(self, request, *args, **kwargs):
+    student = self.get_object()
+    messages.success(self.request, 'Info on %s %s has been sucessfully deleted.' % (student.name, student.surname))
+    return super(StudentDeleteView, self).delete(request, *args, **kwargs)
+  
 
   def get_context_data(self, **kwargs):
     context = super(StudentDeleteView, self).get_context_data(**kwargs)

@@ -54,7 +54,7 @@
             <tbody>
             {% for c in course %}
               <tr>                
-              <td class="tdfunc"><a href="{% url 'students:list_view'%}?course_id={{ c.id }}">{{ c|upper }}</a></td>
+              <td class="tdfunc"><a href="{% url 'courses:detail' c.id %} ">{{ c|upper }}</a></td>
                 <td>
                   {{ c.short_description|title }}
                 </td>
