@@ -39,7 +39,7 @@
               </tr>
             </thead>
             <tbody>
-            {% for student in students %}
+            {% for student in student_list %}
               <tr>
                 <td class="first">{{ student.id }}</td>
                 <td class="tdfunc"><a href="{% url 'students:detail' student.id %}">{{ student.name }} {{ student.surname }}</a></td>

@@ -14,11 +14,10 @@
 <div class="jumbotron">
   <div class="container">
     <div class="col-md-12">
-      <h3>Изменение профиля студента</h3>
+      <h3>Студент {{ message }} будет удален.</h3>
       <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Изменить">
+        <input type="submit" value="Удалить">
       </form>
     </div>
   </div>

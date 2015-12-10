@@ -1,8 +1,10 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from courses.models import Lesson,Course
 from coaches.models import Coach
 from courses.forms import CourseModelForm, LessonModelForm
 from django.contrib import messages
+
+
 
 
 def detail(request,cid):
