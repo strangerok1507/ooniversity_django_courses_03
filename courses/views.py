@@ -61,7 +61,7 @@ class CourseUpdateView(UpdateView):
   context_object_name = 'course'
   template_name = 'courses/edit.html' 
   fields = '__all__'
- 
+   
 
   def get_context_data(self, **kwargs):
       context = super(CourseUpdateView, self).get_context_data(**kwargs)
@@ -73,8 +73,8 @@ class CourseUpdateView(UpdateView):
     messages.success(self.request, u"The changes have been saved.")
     return super(CourseUpdateView, self).form_valid(form)
 
-    def get_success_url(self):
-        return reverse_lazy('courses:edit', None, [self.object.id])
+  def get_success_url(self):
+    return reverse_lazy('courses:edit', None, [self.object.id])
 
 class AddLessonCreateView(CreateView):
   model = Lesson
