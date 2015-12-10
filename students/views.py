@@ -50,8 +50,7 @@ class StudentDeleteView(DeleteView):
     context = super(StudentDeleteView, self).get_context_data(**kwargs)
     student =  Student.objects.get(id=self.kwargs['pk'])
     context['title'] = 'Student info suppression'
-    context['message'] ='%s %s' % (student.name, student.surname)
-    
+    context['message'] ='%s %s' % (student.name, student.surname)    
     return context
     
 
