@@ -16,17 +16,24 @@ class StudentDetailView(DetailView):
 class StudentListView(ListView):
   model = Student  
   paginate_by = 2
-  #context_object_name = 'students'
+  
 
 
   def get_queryset(self):
     id = self.request.GET.get('course_id',None)  
     if id:
       students = Student.objects.filter(courses=id)
+      
     else:
       students = Student.objects.all()
     return students
 
+  def get_context_data(self, **kwargs):
+    context = super(StudentListView, self).get_context_data(**kwargs)
+    id = self.request.GET.get('course_id',None) 
+    if id:
+      context['course_url'] = 'course_id=%s' % id
+    return context
 
 
 #CreateView, UpdateView, DeleteView

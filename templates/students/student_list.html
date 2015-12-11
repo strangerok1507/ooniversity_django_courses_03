@@ -86,6 +86,7 @@
 </div>
 
 <nav>
+{% if not course_url %}
   <ul class="pagination">
    {% if  is_paginated %}
     <!--Если есть предыдущая страница - то делаю ссылку "назад"-->
@@ -106,6 +107,29 @@
     {% endif %}
   {% endif %}
   </ul>
+{% else %}
+<ul class="pagination">
+   {% if  is_paginated %}
+    <!--Если есть предыдущая страница - то делаю ссылку "назад"-->
+    {% if  page_obj.has_previous %}
+      <li><a href="?{{course_url}}&page={{ page_obj.previous_page_number }}">&laquo;previous</a></li>
+    {% endif %}
+     {% for num in page_obj.paginator.page_range %}
+        {% if num == page_obj.number %}
+        <li><a><span class="current"><b>{{ num }}</b></span></a></li>
+        {% else %}
+        <li><a href="?{{course_url}}&page={{ num }}"> {{ num }}</a></li>
+        {% endif %} 
+    {% endfor %}
+    
+    <!--Если есть следующая страница - то ссылка "вперед"-->
+    {% if  page_obj.has_next %}
+     <li><a href="?{{course_url}}&page={{ page_obj.next_page_number }}">next&raquo;</a></li>
+    {% endif %}
+  {% endif %}
+  </ul>
+
+{% endif %}
 </nav>
         </div>
       </div>
