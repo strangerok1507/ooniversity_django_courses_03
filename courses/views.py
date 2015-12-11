@@ -12,7 +12,7 @@ from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteVi
 class CourseDetailView(DetailView):
   model = Course
   template_name = "courses/detail.html"
-  context_object_name = "course"
+  context_object_name = 'course'
   fields = '__all__'
 
   def get_context_data(self, **kwargs):
