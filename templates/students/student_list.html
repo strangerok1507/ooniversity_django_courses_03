@@ -39,7 +39,7 @@
               </tr>
             </thead>
             <tbody>
-            {% for student in student_list %}
+            {% for student in students %}
               <tr>
                 <td class="first">{{ student.id }}</td>
                 <td class="tdfunc"><a href="{% url 'students:detail' student.id %}">{{ student.name }} {{ student.surname }}</a></td>
@@ -69,18 +69,24 @@
 
 <nav>
   <ul class="pagination">
-   {% if  is_paginated %}
+   
     <!--Если есть предыдущая страница - то делаю ссылку "назад"-->
-    {% if  page_obj.has_previous %}
-      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;previous</a></li>
+    {% if  students.has_previous %}
+      <li><a href="?page={{ students.previous_page_number }}">&laquo;previous</a></li>
     {% endif %}
     <!--Выводим текущую страницу из всех возможных-->
-    <li><a>страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</a></li>
+    {% for num in students.paginator.page_range %}
+        {% if num == students.number %}
+        <li><span class="current"><b>{{ num }}</b></span></li>
+        {% else %}
+        <li><a href="?page={{ num }}"> {{ num }}</a></li>
+        {% endif %} 
+    {% endfor %}
     <!--Если есть следующая страница - то ссылка "вперед"-->
-    {% if  page_obj.has_next %}
-     <li><a href="?page={{ page_obj.next_page_number }}">next&raquo;</a></li>
+    {% if  students.has_next %}
+     <li><a href="?page={{ students.next_page_number }}">next&raquo;</a></li>
     {% endif %}
-  {% endif %}
+  
   </ul>
 </nav>
         </div>

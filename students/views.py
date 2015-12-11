@@ -4,6 +4,7 @@ from django.shortcuts import render,redirect
 from students.models import Student
 from courses.models import Course
 from students.forms import StudentModelForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
@@ -14,13 +15,25 @@ class StudentDetailView(DetailView):
 
 class StudentListView(ListView):
   model = Student  
-  paginate_by = 2
+  #paginate_by = 2
+  context_object_name = 'students'
+  template_name = "students/student_list.html"
+
   def get_queryset(self):
     id = self.request.GET.get('course_id',None)  
     if id:
       students = Student.objects.filter(courses=id)
     else:
       students = Student.objects.all()
+    paginator = Paginator(students, 2)
+    page = self.request.GET.get('page')
+    try:
+      students = paginator.page(page)
+    except PageNotAnInteger:
+      students = paginator.page(1)
+    except EmptyPage:
+      students = paginator.page(paginator.num_pages)
+    
     return students
 
 #CreateView, UpdateView, DeleteView
