@@ -91,7 +91,7 @@
    {% if  is_paginated %}
     <!--Если есть предыдущая страница - то делаю ссылку "назад"-->
     {% if  page_obj.has_previous %}
-      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo; previous</a></li>
+      <li><a href="?page={{ page_obj.previous_page_number }}"><< previous</a></li>
     {% endif %}
      {% for num in page_obj.paginator.page_range %}
         {% if num == page_obj.number %}
@@ -103,7 +103,7 @@
     
     <!--Если есть следующая страница - то ссылка "вперед"-->
     {% if  page_obj.has_next %}
-     <li><a href="?page={{ page_obj.next_page_number }}">next &raquo;</a></li>
+     <li><a href="?page={{ page_obj.next_page_number }}">next >></a></li>
     {% endif %}
   {% endif %}
   </ul>
@@ -112,7 +112,7 @@
    {% if  is_paginated %}
     <!--Если есть предыдущая страница - то делаю ссылку "назад"-->
     {% if  page_obj.has_previous %}
-      <li><a href="?{{course_url}}&page={{ page_obj.previous_page_number }}">&laquo; previous</a></li>
+      <li><a href="?{{course_url}}&page={{ page_obj.previous_page_number }}"><< previous</a></li>
     {% endif %}
      {% for num in page_obj.paginator.page_range %}
         {% if num == page_obj.number %}
@@ -124,7 +124,7 @@
     
     <!--Если есть следующая страница - то ссылка "вперед"-->
     {% if  page_obj.has_next %}
-     <li><a href="?{{course_url}}&page={{ page_obj.next_page_number }}">next &raquo;</a></li>
+     <li><a href="?{{course_url}}&page={{ page_obj.next_page_number }}">next >></a></li>
     {% endif %}
   {% endif %}
   </ul>
