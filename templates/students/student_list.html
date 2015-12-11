@@ -72,13 +72,13 @@
    {% if  is_paginated %}
     <!--Если есть предыдущая страница - то делаю ссылку "назад"-->
     {% if  page_obj.has_previous %}
-      <li><a href="?page={{ page_obj.previous_page_number }}">previous</a></li>
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;previous</a></li>
     {% endif %}
     <!--Выводим текущую страницу из всех возможных-->
     <li><a>страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</a></li>
     <!--Если есть следующая страница - то ссылка "вперед"-->
     {% if  page_obj.has_next %}
-     <li><a href="?page={{ page_obj.next_page_number }}">next</a></li>
+     <li><a href="?page={{ page_obj.next_page_number }}">next&raquo;</a></li>
     {% endif %}
   {% endif %}
   </ul>
