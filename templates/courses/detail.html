@@ -26,8 +26,8 @@
             <h3>{{ course.description|truncatechars:32 }}</h3>
         </div>
     </div>      
-      {% include "include/coach_include.html" with block_title="Преподаватель" instructor=coach %}            
-      {% include "include/coach_include.html" with block_title="Ассистент" instructor=assistant %}
+      {% include "include/coach_include.html" with block_title="Преподаватель" instructor=course.coach %}            
+      {% include "include/coach_include.html" with block_title="Ассистент" instructor=course.assistant %}
       <a href="{% url 'courses:add_lesson' course.id %}"><button class="glyphicon glyphicon-plus btn btn-success">Добавить занятие</button></a>      
     <div class="row">
         <div class="col-md-12">
