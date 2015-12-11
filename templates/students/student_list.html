@@ -39,7 +39,7 @@
               </tr>
             </thead>
             <tbody>
-            {% for student in students %}
+            {% for student in student_list %}
               <tr>
                 <td class="first">{{ student.id }}</td>
                 <td class="tdfunc"><a href="{% url 'students:detail' student.id %}">{{ student.name }} {{ student.surname }}</a></td>
@@ -65,28 +65,46 @@
             </tbody>
           </table>
           
-
+<div class="pagination">
+ 
+    {% if articles.has_previous %}
+        <a href="?page={{ articles.previous_page_number }}">←</a>
+    {% endif %}
+ 
+    {% for num in articles.paginator.page_range %}
+        {% if num == articles.number %}
+            <span class="current"><b>{{ num }}</b></span>
+        {% else %}
+            <a href="?page={{ num }}"> {{ num }}</a>
+        {% endif %} 
+    {% endfor %}
+ 
+    {% if article_list.has_next %}
+        <a href="?page={{ article_list.next_page_number }}">→</a>
+    {% endif %}
+ 
+</div>
 
 <nav>
   <ul class="pagination">
-   
+   {% if  is_paginated %}
     <!--Если есть предыдущая страница - то делаю ссылку "назад"-->
-    {% if  students.has_previous %}
-      <li><a href="?page={{ students.previous_page_number }}">&laquo;previous</a></li>
+    {% if  page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;previous</a></li>
     {% endif %}
-    <!--Выводим текущую страницу из всех возможных-->
-    {% for num in students.paginator.page_range %}
-        {% if num == students.number %}
-        <li><span class="current"><b>{{ num }}</b></span></li>
+     {% for num in page_obj.paginator.page_range %}
+        {% if num == page_obj.number %}
+        <li><a><span class="current"><b>{{ num }}</b></span></a></li>
         {% else %}
         <li><a href="?page={{ num }}"> {{ num }}</a></li>
         {% endif %} 
     {% endfor %}
+    
     <!--Если есть следующая страница - то ссылка "вперед"-->
-    {% if  students.has_next %}
-     <li><a href="?page={{ students.next_page_number }}">next&raquo;</a></li>
+    {% if  page_obj.has_next %}
+     <li><a href="?page={{ page_obj.next_page_number }}">next&raquo;</a></li>
     {% endif %}
-  
+  {% endif %}
   </ul>
 </nav>
         </div>

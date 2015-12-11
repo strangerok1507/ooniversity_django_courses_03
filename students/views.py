@@ -15,9 +15,9 @@ class StudentDetailView(DetailView):
 
 class StudentListView(ListView):
   model = Student  
-  #paginate_by = 2
-  context_object_name = 'students'
-  template_name = "students/student_list.html"
+  paginate_by = 2
+  #context_object_name = 'students'
+
 
   def get_queryset(self):
     id = self.request.GET.get('course_id',None)  
@@ -25,16 +25,9 @@ class StudentListView(ListView):
       students = Student.objects.filter(courses=id)
     else:
       students = Student.objects.all()
-    paginator = Paginator(students, 2)
-    page = self.request.GET.get('page')
-    try:
-      students = paginator.page(page)
-    except PageNotAnInteger:
-      students = paginator.page(1)
-    except EmptyPage:
-      students = paginator.page(paginator.num_pages)
-    
     return students
+
+
 
 #CreateView, UpdateView, DeleteView
 class StudentCreateView(CreateView):
