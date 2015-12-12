@@ -65,72 +65,31 @@
             </tbody>
           </table>
           
-<div class="pagination">
- 
-    {% if articles.has_previous %}
-        <a href="?page={{ articles.previous_page_number }}">←</a>
-    {% endif %}
- 
-    {% for num in articles.paginator.page_range %}
-        {% if num == articles.number %}
-            <span class="current"><b>{{ num }}</b></span>
-        {% else %}
-            <a href="?page={{ num }}"> {{ num }}</a>
-        {% endif %} 
-    {% endfor %}
- 
-    {% if article_list.has_next %}
-        <a href="?page={{ article_list.next_page_number }}">→</a>
-    {% endif %}
- 
-</div>
+
 
 <nav>
-{% if not course_url %}
-  <ul class="pagination">
-   {% if  is_paginated %}
-    <!--Если есть предыдущая страница - то делаю ссылку "назад"-->
-    {% if  page_obj.has_previous %}
-      <li><a href="?page={{ page_obj.previous_page_number }}"><< previous</a></li>
-    {% endif %}
-     {% for num in page_obj.paginator.page_range %}
-        {% if num == page_obj.number %}
-        <li><a><span class="active"><b>{{ num }}</b></span></a></li>
-        {% else %}
-        <li><a href="?page={{ num }}"> {{ num }}</a></li>
-        {% endif %} 
-    {% endfor %}
-    
-    <!--Если есть следующая страница - то ссылка "вперед"-->
-    {% if  page_obj.has_next %}
-     <li><a href="?page={{ page_obj.next_page_number }}">next >></a></li>
-    {% endif %}
-  {% endif %}
-  </ul>
-{% else %}
 <ul class="pagination">
    {% if  is_paginated %}
     <!--Если есть предыдущая страница - то делаю ссылку "назад"-->
     {% if  page_obj.has_previous %}
-      <li><a href="?{{course_url}}&page={{ page_obj.previous_page_number }}"><< previous</a></li>
+      <li><a href="?{{course_url}}page={{ page_obj.previous_page_number }}"><< previous</a></li>
     {% endif %}
      {% for num in page_obj.paginator.page_range %}
         {% if num == page_obj.number %}
         <li><a><span class="active"><b>{{ num }}</b></span></a></li>
         {% else %}
-        <li><a href="?{{course_url}}&page={{ num }}"> {{ num }}</a></li>
+        <li><a href="?{{course_url}}page={{ num }}"> {{ num }}</a></li>
         {% endif %} 
     {% endfor %}
     
     <!--Если есть следующая страница - то ссылка "вперед"-->
     {% if  page_obj.has_next %}
-     <li><a href="?{{course_url}}&page={{ page_obj.next_page_number }}">next >></a></li>
+     <li><a href="?{{course_url}}page={{ page_obj.next_page_number }}">next >></a></li>
     {% endif %}
   {% endif %}
   </ul>
-
-{% endif %}
 </nav>
+
         </div>
       </div>
     </div>
