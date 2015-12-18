@@ -19,10 +19,7 @@ class StudentDetailView(DetailView):
 class StudentListView(ListView):
   model = Student  
   paginate_by = 2  
-  logger.debug("Students detail view has been debugged")
-  logger.info("Logger of students detail view informs you!")
-  logger.warning("Logger of students detail view warns you!")
-  logger.error("Students detail view went wrong!")
+  
 
 
   def get_queryset(self):
