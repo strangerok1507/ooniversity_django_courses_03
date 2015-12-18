@@ -92,3 +92,35 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
 ADMINS = (('Vlad','test@gmail.com'), ('t2','test2@gmail.com'))
+LOGGING = {
+    'version': 1,
+    'loggers': {
+        'courses': {
+            'handlers': ['file_courses'],
+            'level': 'DEBUG',
+        },
+        'students': {
+            'handlers': ['file_students'],
+            'level': 'DEBUG',
+        },
+    },
+
+    'handlers': {
+        'console':{
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+        'file_courses': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR,'courses_logger.log'),
+        },
+        'file_students': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR,'students_logger.log'),
+        },
+
+    },
+    
+}

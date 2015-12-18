@@ -10,13 +10,19 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
 
+import logging
+logger = logging.getLogger(__name__)
+
 class StudentDetailView(DetailView):
   model = Student
 
 class StudentListView(ListView):
   model = Student  
-  paginate_by = 2
-  
+  paginate_by = 2  
+  logger.debug("Students detail view has been debugged")
+  logger.info("Logger of students detail view informs you!")
+  logger.warning("Logger of students detail view warns you!")
+  logger.error("Students detail view went wrong!")
 
 
   def get_queryset(self):
