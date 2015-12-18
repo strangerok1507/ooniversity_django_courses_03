@@ -35,6 +35,10 @@ class StudentListView(ListView):
     return students
 
   def get_context_data(self, **kwargs):
+    logger.debug("Students detail view has been debugged")
+    logger.info("Logger of students detail view informs you!")
+    logger.warning("Logger of students detail view warns you!")
+    logger.error("Students detail view went wrong!")
     context = super(StudentListView, self).get_context_data(**kwargs)
     id = self.request.GET.get('course_id',None) 
     if id:
