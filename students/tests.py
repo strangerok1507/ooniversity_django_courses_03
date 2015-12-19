@@ -93,12 +93,12 @@ class StudentsListTest(TestCase):
 
 class StudentsDetailTest(TestCase):
 
-  def test_student_detail_not_found(self):
+  def test_student_if_null(self):
     client = Client()
     response = client.get('/students/1/')  
     self.assertEqual(response.status_code, 404)
     
-  def test_student_detail_normal_response(self):
+  def test_student_detail(self):
     client = Client()
     items = add_students()
     response = client.get('/students/1/')
@@ -127,3 +127,9 @@ class StudentsDetailTest(TestCase):
     self.assertContains(response,'логин skype')
     self.assertContains(response,'телефон')
     self.assertContains(response,'курсы')
+
+  def row_in_table(self):
+    students = add_students()
+    client = Client()
+    response = client.get('/students/3')
+    self.assertContains(response,'<a href="/courses/3/">JavaBursa</a>')
