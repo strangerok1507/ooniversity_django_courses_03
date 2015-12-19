@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-s
+# -*- coding: utf-8 -*-
 from django.test import TestCase
 from django.test import Client
 from students.models import Student
@@ -100,36 +100,37 @@ class StudentsDetailTest(TestCase):
     
   def test_student_detail(self):
     client = Client()
-    items = add_students()
+    students = add_students()
     response = client.get('/students/1/')
     self.assertEqual(response.status_code, 200)
 
-  def active_punkt_menu(self):
-    students = add_students()
+  def test_active_punkt_menu(self):
     client = Client()
-    response = client.get('/students/1')
-    self.assertContains(response,'<li class="active"><a href="/students/">Students</a></li>')
+    students = add_students()
+    response = client.get('/students/1/')
+    self.assertContains(response,'<li  class="active"><a href="/students/">Students</a></li>')
 
-  def title_of_page(self):
+  def test_title_of_page(self):
     students = add_students()
     client = Client()
-    response = client.get('/students/%s' % students[1].id)
-    text = '<h1>%s</h1>' % students[1].full_name
+    response = client.get('/students/1/')
+    text = u'<h1>%s %s</h1>' % (students[1].name,students[1].surname)
     self.assertContains(response,text)
 
-  def row_in_table(self):
+  def test_row_in_table(self):
     students = add_students()
     client = Client()
-    response = client.get('/students/%s' % students[1].id)
-    self.assertContains(response,'дата рождения')
-    self.assertContains(response,'адрес')
-    self.assertContains(response,'почта')
-    self.assertContains(response,'логин skype')
-    self.assertContains(response,'телефон')
-    self.assertContains(response,'курсы')
+    url = '/students/%s/' % students[1].id
+    response = client.get(url)
+    self.assertContains(response,u'дата рождения')
+    self.assertContains(response,u'адрес')
+    self.assertContains(response,u'почта')
+    self.assertContains(response,u'логин skype')
+    self.assertContains(response,u'телефон')
+    self.assertContains(response,u'курсы')
 
-  def row_in_table(self):
+  def test_url_course(self):
     students = add_students()
     client = Client()
-    response = client.get('/students/3')
-    self.assertContains(response,'<a href="/courses/3/">JavaBursa</a>')
+    response = client.get('/students/3/')
+    self.assertContains(response,'<a href="/courses/1/">')
